@@ -2,6 +2,6 @@
 {
     public interface IBaseReposetorySearchable<TModel , Tkey , TSearchModel , TSearchResualt> : IBaseRepository<TModel,Tkey>
     {
-        TSearchResualt Search(TSearchModel s, out int RecordCount);
+        List<TSearchModel> Search(TSearchModel s, out int RecordCount);
     }
 }

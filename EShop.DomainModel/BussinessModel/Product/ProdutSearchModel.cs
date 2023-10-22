@@ -10,5 +10,6 @@ namespace EShop.DomainModel.BussinessModel.Product
         public int? UnitPriceFrom { get; set;}
         public int? UnitPriceTo { get; set; }
         public string ProductName { get; set; }
+        public string Slug { get; set; }
     }
 }

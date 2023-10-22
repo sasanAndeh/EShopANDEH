@@ -6,7 +6,7 @@
         public string ProductName { get; set; }
         public string CategoryName { get; set; }
         public string SupplierName { get; set; }
-        public bool HasRealtedName { get; set; }
+        public bool HasRealtedOrder{ get; set; }
         public long  UnitPrice { get; set; }
         public string Slug { get; set; }
 

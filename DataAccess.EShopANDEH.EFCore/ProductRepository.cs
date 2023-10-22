@@ -96,12 +96,67 @@ namespace DataAccess.EShopANDEH.EFCore
 
         public OperationResult Remove(int id)
         {
-            throw new NotImplementedException();
+
+            OperationResult result = new OperationResult("Remove Product");
+            try
+            {
+                var product = DB.Products.FirstOrDefault(x => x.ProductID == id);
+                var productFeature = product.ProductFeatures.ToList();
+                foreach (var feature in productFeature)
+                    DB.ProductFeatures.Remove(feature);
+
+
+                var productKeyword = product.ProductKeywords.ToList();
+                foreach (var item in productKeyword)
+                    DB.ProductKeywords.Remove(item);
+
+                DB.SaveChanges();
+                DB.Products.Remove(product);
+                DB.SaveChanges();
+                return result.ToSuccess("Remove Product Successflly", id);
+            }
+            catch (Exception ex)
+            {
+
+                return result.ToFail("Remove Product Failed" + ex.Message);    
+            }
+            
+
         }
 
-        public ProductListItem Search(ProdutSearchModel s, out int RecordCount)
+        public List<ProductListItem> Search(ProdutSearchModel searchModel, out int RecordCount)
         {
-            throw new NotImplementedException();
+            var query = from product in DB.Products select product;
+            if (!string.IsNullOrEmpty(searchModel.ProductName))
+                query = query.Where(x => x.ProductName.StartsWith(searchModel.ProductName));
+            if (!string.IsNullOrEmpty(searchModel.Slug))
+                query = query.Where(x => x.Slug.StartsWith(searchModel.Slug));
+            if (searchModel.CategoryID != null)
+                query = query.Where(x => x.CategoryID == searchModel.CategoryID);
+            if (searchModel.SupplierID != null)
+                query = query.Where(x => x.SupplierID == searchModel.SupplierID);
+            if (searchModel.UnitPriceFrom != null)
+                query = query.Where(x => x.Unitprice >= searchModel.UnitPriceFrom);
+            if (searchModel.UnitPriceTo != null)
+                query = query.Where(x => x.Unitprice <= searchModel.UnitPriceTo);
+
+            RecordCount = query.Count();
+            query = query.OrderByDescending(x=> x.ProductID)
+                .Skip(searchModel.PageIndex * searchModel.PageSize)
+                .Take(searchModel.PageSize);
+            var query2 = from item in query select new ProductListItem
+            {
+                CategoryName = item.Category.CategoryName,
+                HasRealtedOrder = item.OrderDetails.Any(),
+                SupplierName = item.Supplier.SupplierName,
+                ProductID = item.ProductID,
+                ProductName = item.ProductName,
+                Slug = item.Slug,
+                UnitPrice = item.Unitprice,
+            };
+            return query2.ToList();
+
+
         }
 
         public OperationResult Update(Product curent)
@@ -118,7 +173,7 @@ namespace DataAccess.EShopANDEH.EFCore
             catch (Exception ex)
             {
 
-                return result.ToFail("Product Update Failed"+ex.Message);
+                return result.ToFail("Product Update Failed" + ex.Message);
             }
 
         }
