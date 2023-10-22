@@ -1,0 +1,86 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShopANDEH", "EShopANDEH\EShopANDEH.csproj", "{BF9D537C-4DEF-41F4-B5F2-25681DF3D842}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainModel", "DomainModel", "{8FD45824-11F6-47C3-A74F-2E04FB21427A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShop.DomainModel", "EShop.DomainModel\EShop.DomainModel.csproj", "{179CC87C-A746-4A50-BF54-8C88A3537324}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrap", "Bootstrap", "{8093F362-97A1-4300-905F-C30985D015A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShopAndeh.BootStrap", "EShopAndeh.BootStrap\EShopAndeh.BootStrap.csproj", "{5DA02A62-EA0C-4321-B66F-0DDDC9016A42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataACcess", "DataACcess", "{0C40623D-28E0-4119-8681-65B7B9E480EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShopANDEH.DataAccessServiceContract", "EShopANDEH.DataAccessServiceContract\EShopANDEH.DataAccessServiceContract.csproj", "{1C049653-4E20-4C86-A86D-1B53B7B7EBC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrameWork", "FrameWork", "{9E64B137-2A6E-4B28-9693-3C98DE9AD33E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrameWork", "FrameWork\FrameWork.csproj", "{F63FAE5A-246E-4E19-9B58-9786F05DEF60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess.EShopANDEH.EFCore", "DataAccess.EShopANDEH.EFCore\DataAccess.EShopANDEH.EFCore.csproj", "{3701B6BB-6037-4FBC-8AE7-D589E304AF40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{6E2DAF24-6B76-4522-AB4E-CE57FDB2F778}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShopANDEH.ApplicationServiceContract", "EShopANDEH.ApplicationServiceContract\EShopANDEH.ApplicationServiceContract.csproj", "{F5FB16DE-0FD9-4865-AE43-592AF062BDC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShopANDEH.Application", "EShopANDEH.Application\EShopANDEH.Application.csproj", "{4F2D9DD7-5BEB-409A-8739-CEB573CEA9CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF9D537C-4DEF-41F4-B5F2-25681DF3D842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF9D537C-4DEF-41F4-B5F2-25681DF3D842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF9D537C-4DEF-41F4-B5F2-25681DF3D842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF9D537C-4DEF-41F4-B5F2-25681DF3D842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{179CC87C-A746-4A50-BF54-8C88A3537324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179CC87C-A746-4A50-BF54-8C88A3537324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179CC87C-A746-4A50-BF54-8C88A3537324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179CC87C-A746-4A50-BF54-8C88A3537324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA02A62-EA0C-4321-B66F-0DDDC9016A42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA02A62-EA0C-4321-B66F-0DDDC9016A42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA02A62-EA0C-4321-B66F-0DDDC9016A42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA02A62-EA0C-4321-B66F-0DDDC9016A42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C049653-4E20-4C86-A86D-1B53B7B7EBC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C049653-4E20-4C86-A86D-1B53B7B7EBC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C049653-4E20-4C86-A86D-1B53B7B7EBC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C049653-4E20-4C86-A86D-1B53B7B7EBC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F63FAE5A-246E-4E19-9B58-9786F05DEF60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63FAE5A-246E-4E19-9B58-9786F05DEF60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63FAE5A-246E-4E19-9B58-9786F05DEF60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63FAE5A-246E-4E19-9B58-9786F05DEF60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3701B6BB-6037-4FBC-8AE7-D589E304AF40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3701B6BB-6037-4FBC-8AE7-D589E304AF40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3701B6BB-6037-4FBC-8AE7-D589E304AF40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3701B6BB-6037-4FBC-8AE7-D589E304AF40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FB16DE-0FD9-4865-AE43-592AF062BDC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FB16DE-0FD9-4865-AE43-592AF062BDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FB16DE-0FD9-4865-AE43-592AF062BDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FB16DE-0FD9-4865-AE43-592AF062BDC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F2D9DD7-5BEB-409A-8739-CEB573CEA9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F2D9DD7-5BEB-409A-8739-CEB573CEA9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F2D9DD7-5BEB-409A-8739-CEB573CEA9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F2D9DD7-5BEB-409A-8739-CEB573CEA9CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{179CC87C-A746-4A50-BF54-8C88A3537324} = {8FD45824-11F6-47C3-A74F-2E04FB21427A}
+		{5DA02A62-EA0C-4321-B66F-0DDDC9016A42} = {8093F362-97A1-4300-905F-C30985D015A1}
+		{1C049653-4E20-4C86-A86D-1B53B7B7EBC1} = {0C40623D-28E0-4119-8681-65B7B9E480EA}
+		{F63FAE5A-246E-4E19-9B58-9786F05DEF60} = {9E64B137-2A6E-4B28-9693-3C98DE9AD33E}
+		{3701B6BB-6037-4FBC-8AE7-D589E304AF40} = {0C40623D-28E0-4119-8681-65B7B9E480EA}
+		{F5FB16DE-0FD9-4865-AE43-592AF062BDC0} = {6E2DAF24-6B76-4522-AB4E-CE57FDB2F778}
+		{4F2D9DD7-5BEB-409A-8739-CEB573CEA9CC} = {6E2DAF24-6B76-4522-AB4E-CE57FDB2F778}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5DFE5CFE-24B3-42E0-B714-64408E614F70}
+	EndGlobalSection
+EndGlobal
