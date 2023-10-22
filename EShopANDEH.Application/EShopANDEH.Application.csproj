@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EShop.DomainModel\EShop.DomainModel.csproj" />
+    <ProjectReference Include="..\EShopANDEH.ApplicationServiceContract\EShopANDEH.ApplicationServiceContract.csproj" />
+    <ProjectReference Include="..\EShopANDEH.DataAccessServiceContract\EShopANDEH.DataAccessServiceContract.csproj" />
+    <ProjectReference Include="..\FrameWork\FrameWork.csproj" />
+  </ItemGroup>
+
+</Project>
