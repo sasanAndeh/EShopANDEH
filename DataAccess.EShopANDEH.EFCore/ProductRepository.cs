@@ -31,67 +31,137 @@ namespace DataAccess.EShopANDEH.EFCore
 
         public OperationResult DisAboveKeyWordFromProduct(int KeyWordID, int ProductID)
         {
-            throw new NotImplementedException();
+            OperationResult result = new OperationResult("Remove KeyWord From Product");
+            try
+            {
+                DB.ProductKeywords
+                    .Remove(DB.ProductKeywords
+                    .FirstOrDefault(x=> x.KeywordID == KeyWordID && x.ProductID == ProductID));
+                DB.SaveChanges();
+                return result.ToSuccess("Product keyword removed Successfully");
+
+            }
+            catch (Exception ex)
+            {
+
+                return result.ToFail("Product Remove Faild " + ex.Message);
+            }
         }
 
         public bool ExistFeature(string FeatureName)
         {
-            throw new NotImplementedException();
+            return DB.Features.Any(x=> x.FeatureName == FeatureName);
         }
 
         public bool ExistKeyWord(string keyWord)
         {
-            throw new NotImplementedException();
+            return DB.KeyWords.Any(x=> x.KeywordText == keyWord);
         }
 
         public bool ExistProductKey(int ProductId, int KeyWord)
         {
-            throw new NotImplementedException();
+            return DB.ProductKeywords.Any(x => x.ProductID == ProductId && x.KeywordID == KeyWord);
         }
 
         public bool ExistProductName(string productName)
         {
-            throw new NotImplementedException();
+            return DB.Products.Any(x=> x.ProductName == productName);
         }
 
         public bool ExistProductNameForAnotherPRoduct(string productName, int ProductID)
         {
-            throw new NotImplementedException();
+            return DB.Products.Any(x=> x.ProductID!=ProductID && x.ProductName == productName);
         }
 
         public bool ExistSlug(string slug)
         {
-            throw new NotImplementedException();
+            return DB.Products.Any(p => p.Slug == slug);
         }
 
-        public bool ExistSlugForAnotherProduct(string slug)
+        public bool ExistSlugForAnotherProduct(string slug,int ProductID)
         {
-            throw new NotImplementedException();
+           return DB.Products.Any(p => p.ProductID != ProductID && p.Slug == slug );
         }
 
         public List<Product> GetAll()
         {
-            throw new NotImplementedException();
+            return DB.Products.ToList();
         }
 
         public Product GetbyId(int id)
         {
-            throw new NotImplementedException();
+            return DB.Products.FirstOrDefault(x=> x.ProductID == id);
         }
 
         public OperationResult Regester(Product curent)
         {
-            throw new NotImplementedException();
+            OperationResult result = new OperationResult("Register Product");
+            try
+            {
+                DB.Products.Add(curent);
+                DB.SaveChanges();
+                return result.ToSuccess("Register Product Successfully" ,curent.ProductID);
+            }
+            catch (Exception ex)
+            {
+
+                return result.ToFail("Faild to Register Product");
+            }
         }
 
         public OperationResult RegisterFeatureAndAssingItToTheProduct(ProductFeatrueAddModel pf)
         {
-            throw new NotImplementedException();
+            OperationResult resualt = new OperationResult("Register Featuer and Assing to Product ");
+            try
+            {
+                var featureRegister = new Feature
+                {
+                    FeatureName = pf.FeatureName,
+                };
+                DB.Features.Add(featureRegister);
+                DB.SaveChanges();
+                var productFeautre = new ProductFeature
+                {
+                    EffectOnUnitPrice = pf.EffectOnPrice,
+                    FeatureID = featureRegister.FeatureID,
+                    FeatureValue = pf.FeatureValue,
+                    ProductID = pf.ProductId,
+                };
+                DB.SaveChanges();
+                return resualt.ToSuccess("Register Featuer and Assing to Product  is Successfully", pf.ProductId);
+            }
+            catch (Exception ex)
+            {
+
+                return resualt.ToFail("Faild to Register Featuer and Assing to Product " + ex.Message);
+            }
         }
 
-        public OperationResult RegisterKeyWordAndAassingItToTheProduct(string keyWord, int ProductID)
+        public OperationResult RegisterKeyWordAndAassingItToTheProduct(string KeyWord, int productID)
         {
-            throw new NotImplementedException();
+            OperationResult result = new OperationResult("Register Keyword and Assing it to Prodauct");
+            try
+            {
+                var KeyWordRegsiter = new KeyWord { KeywordText = KeyWord };
+                DB.KeyWords.Add(KeyWordRegsiter);
+                DB.SaveChanges();
+                DB.ProductKeywords.Add(
+                    new ProductKeyword
+                    {
+                        KeywordID = KeyWordRegsiter.KeywordID,
+                        ProductID = productID
+                    });
+                DB.SaveChanges();
+                return result.ToSuccess(" Keyword Successfully Assinged");
+            }
+            catch (Exception ex)
+            {
+
+                return result.ToFail("Register Keyword Failed"+ex.Message);
+            }
+
+
+
         }
 
         public OperationResult Remove(int id)
@@ -113,7 +183,7 @@ namespace DataAccess.EShopANDEH.EFCore
                 DB.SaveChanges();
                 DB.Products.Remove(product);
                 DB.SaveChanges();
-                return result.ToSuccess("Remove Product Successflly", id);
+                return result.ToSuccess("Remove Product Successfully", id);
             }
             catch (Exception ex)
             {

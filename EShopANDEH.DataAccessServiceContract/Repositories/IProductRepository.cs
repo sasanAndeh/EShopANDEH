@@ -10,7 +10,7 @@ namespace EShopANDEH.DataAccessServiceContract.Repositories
         bool ExistProductName(string productName);
         bool ExistProductNameForAnotherPRoduct(string productName,int ProductID);
         bool ExistSlug(string slug);
-        bool ExistSlugForAnotherProduct(string slug);
+        bool ExistSlugForAnotherProduct(string slug,int ProductID);
         bool ExistProductKey(int ProductId, int KeyWord);
         bool ExistKeyWord(string keyWord);
         bool ExistFeature(string FeatureName);
