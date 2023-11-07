@@ -11,7 +11,7 @@
         public Category Parent { get; set; }
         public ICollection<Category> Childrens  { get; set; }
         public ICollection<Product> Products { get; set; }
-        public ICollection<CategoryFeature> Categories { get; set; }
+        public ICollection<CategoryFeature> CategoryFeatures { get; set; }
 
         public Category() 
         {

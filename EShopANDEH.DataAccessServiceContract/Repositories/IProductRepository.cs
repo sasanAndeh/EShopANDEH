@@ -18,7 +18,7 @@ namespace EShopANDEH.DataAccessServiceContract.Repositories
         OperationResult RegisterKeyWordAndAassingItToTheProduct(string keyWord,int ProductID);
         OperationResult DisAboveKeyWordFromProduct(int KeyWordID, int ProductID);
         OperationResult AssingCategoryFeatureToProductAfterRegistration(int ProductID);
-        OperationResult AssingFeatureValueSpecificProductandFeatrue(int ProductID,int FeatrueID , string FeatureName);
+        OperationResult AssingFeatureValueSpecificProductandFeatrue(FeatureValueAddModel fp);
         OperationResult RegisterFeatureAndAssingItToTheProduct(ProductFeatrueAddModel pf);
 
     }

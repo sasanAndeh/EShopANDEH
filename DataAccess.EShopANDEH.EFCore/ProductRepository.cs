@@ -1,6 +1,7 @@
 ﻿using EShop.DomainModel.BussinessModel.Product;
 using EShop.DomainModel.Models;
 using EShopANDEH.DataAccessServiceContract.Repositories;
+using FrameWork.BaseRepositories;
 using FrameWork.DTOS;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,17 +17,71 @@ namespace DataAccess.EShopANDEH.EFCore
         }
         public OperationResult AssingCategoryFeatureToProductAfterRegistration(int ProductID)
         {
-            throw new NotImplementedException();
+            OperationResult result = new(" Assing Category Feature to Product Afert Regsiteration ");
+            try
+            {
+                var product = DB.Products.FirstOrDefault(x => x.ProductID == ProductID);
+                var category = DB.Categories.FirstOrDefault(x => x.CategoryID == product.CategoryID);
+                var categoryfeature = category.CategoryFeatures.ToList();
+                foreach (CategoryFeature item in categoryfeature)
+                {
+                    ProductFeature productfeature = new ProductFeature{ 
+                        EffectOnUnitPrice =0,
+                        FeatureID = item.FeatureID,
+                        FeatureValue = String.Empty,
+                        ProductID= ProductID,
+                    };
+                    DB.ProductFeatures.Add(productfeature);
+                }
+                DB.SaveChanges();
+                return result.ToSuccess("Assing Category Feature to Product Afert Regsiteration Successflly");
+            }
+            catch (Exception ex)
+            {
+
+                return result.ToFail(" Assing Category Feature to Product Afert Regsiteration Faild ");
+            }
         }
 
-        public OperationResult AssingFeatureValueSpecificProductandFeatrue(int ProductID, int FeatrueID, string FeatureName)
+        public OperationResult AssingFeatureValueSpecificProductandFeatrue(FeatureValueAddModel fp)
         {
-            throw new NotImplementedException();
+            OperationResult result = new OperationResult("AssignCategoryFeatureToProductAfterRegistration");
+
+            try
+            {
+
+                var productfeatures = DB.ProductFeatures.FirstOrDefault(
+                    f => f.FeatureID == fp.FeatrueID && f.ProductID == fp.ProductID);
+
+                productfeatures.EffectOnUnitPrice = fp.EfEffectOnPrice;
+                productfeatures.FeatureValue = fp.FeatureValue;
+                DB.SaveChanges();   
+                return result.ToSuccess("Feature Assigned");
+            }
+            catch (Exception ex)
+            {
+
+                return result.ToFail("Feature Assignment Failed");
+            }
         }
 
-        public OperationResult AssingKeyWordToProduct(int keyWord, int ProductID)
+        public OperationResult AssingKeyWordToProduct(int keywordID, int ProductID)
         {
-            throw new NotImplementedException();
+            OperationResult result = new("Assing KeyWord to PRoduct ");
+            try
+            {
+                DB.ProductKeywords.Add(new ProductKeyword { 
+                    ProductID = ProductID,
+                    KeywordID = keywordID
+                });
+                DB.SaveChanges();
+                return result.ToSuccess("KeyWOrd Assinged");
+            }
+            catch (Exception ex)
+            {
+
+                return result.ToFail("Feature Keyword Failed");
+            }
         }
 
         public OperationResult DisAboveKeyWordFromProduct(int KeyWordID, int ProductID)
@@ -246,6 +301,11 @@ namespace DataAccess.EShopANDEH.EFCore
                 return result.ToFail("Product Update Failed" + ex.Message);
             }
 
+        }
+
+        List<ProdutSearchModel> IBaseReposetorySearchable<Product, int, ProdutSearchModel, ProductListItem>.Search(ProdutSearchModel s, out int RecordCount)
+        {
+            throw new NotImplementedException();
         }
     }
 }
